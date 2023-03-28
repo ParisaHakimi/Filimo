@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #071c01;
+  color: #dddde7;
+
+}
+a{
+  text-decoration: none;
+}
+.nav-bar {
+  background-color: #e4952f;
+}
+.logo {
+  font-family: 'Hanalei', cursive;
+  color:#a81a02;
+  background-color: #f2b566;
+  padding: .3rem 1.3rem;
+  border-radius: 6px;
+  letter-spacing: .3rem;
+  font-weight: bold;
+  font-size: 1.8rem;
+  transition: .3s;
+}
+.logo:hover{
+  color:#f2b566;
+  background-color:#a81a02 ;
+}
+.navLink {
+  color: #071c01;
+}
+.navLink:hover {
+  /* color: #dddde7; */
+  color: #071c01;
+  text-decoration: underline;
+
+}
+.form-label{
+  color: #dddde7;
+
+}
+.movie-list {
+  /* color: #fb8962; */
+  color: #fcc03d;
+  text-align: center;
+}
+.movie-list-container {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* background-color: pink; */
+}
+
+.card {
+  width: 15rem;
+  /* width: 32%; */
+  background-color: #3b3507;
+  background-color: #2c3529;
+  border: 3px solid #fcc03d;
+}
+
+.oneMovieImage{
+  /* width: 40%; */
+  /* height: 50vh; */
+  border: 3px solid #fcc03d;
+
+}
