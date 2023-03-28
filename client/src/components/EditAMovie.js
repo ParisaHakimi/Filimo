@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {useParams, useNavigate} from 'react-router-dom'
 
-const Form = () => {
+const EditAMovie = () => {
   const [title, setTitle] = useState("");
   const [director, setDirector] = useState("");
   const [rating, setRating] = useState("");
@@ -10,12 +10,30 @@ const Form = () => {
   const [releaseYear, setReleaseYear] = useState("");
   const [duration, setDuration] = useState("");
   const [image, setImage] = useState("");
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+
+  useEffect(() => {
+    axios.get(`http://localhost:8000/api/movie/${id}`)
+    .then((res)=>{
+        setTitle(res.data.title);
+        setDirector(res.data.director);
+        setRating(res.data.rating)
+        setGenre(res.data.genre);
+        setReleaseYear(res.data.releaseYear);
+        setDuration(res.data.duration);
+        setImage(res.data.BoxArt)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+  }, [])
+  
+
+  const submitHandler=(e)=>{
     e.preventDefault();
-    axios
-      .post("http://localhost:8000/api/addMovie", {
+    axios.put(`http://localhost:8000/api/updateMovie/${id}`,{
         title,
         director,
         rating,
@@ -24,14 +42,9 @@ const Form = () => {
         duration,
         BoxArt: image,
       })
-      .then((res) => {
-        console.log(res);
-        navigate("/movieLists");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    .then((res)=>{navigate("/movieLists")})
+    .catch(err=>{console.log(err)})
+  }
   return (
     <div className="col-6 mx-auto">
       <form onSubmit={submitHandler}>
@@ -109,11 +122,11 @@ const Form = () => {
           onChange={(e) => setImage(e.target.value)}
         />
         <button type="submit" className="btn btn-info mt-3 w-100">
-          Create Movie
+          Update Movie
         </button>
       </form>
     </div>
   );
 };
 
-export default Form;
+export default EditAMovie;

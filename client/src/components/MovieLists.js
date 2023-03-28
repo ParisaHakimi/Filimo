@@ -19,7 +19,7 @@ const MovieLists = () => {
 
   return (
     <div>
-      <h1 className="movie-list mt-3">Movie List</h1>
+      <h1 className="movie-list mt-3">Movies</h1>
       <div className="container d-flex movie-list-container p-3">
       {list.map((movie,i) => (
         

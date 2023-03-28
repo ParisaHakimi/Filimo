@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate,Link} from "react-router-dom";
 
 const OneMovie = () => {
   const { id } = useParams();
@@ -50,11 +50,11 @@ const OneMovie = () => {
               className="btn btn-danger w-25 me-4"
               onClick={(e) => deleteHandler(movie._id)}
             >
-              <i className="fa fa-trash" aria-hidden="true"></i> Movie
+              <i className="fa fa-trash" aria-hidden="true"></i> Delete
             </button>
-            <button className="btn btn-warning w-25">
-              <i className="fa fa-pencil" aria-hidden="true"></i> Edit Movie
-            </button>
+            <Link to={`/Update-A-Movie/${movie._id}`}className="btn btn-warning w-25">
+              <i className="fa fa-pencil" aria-hidden="true"></i> Edit
+            </Link>
           </div>
         </div>
       </div>
