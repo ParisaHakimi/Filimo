@@ -3,7 +3,7 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Form from './components/Form'
 import MovieLists from './components/MovieLists';
 import NavBar from './components/NavBar';
-import OneMovie from './components/OneMovie';
+import MovieDetail from './components/MovieDetail';
 import EditAMovie from './components/EditAMovie';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
      <Routes>
       <Route path="/addMovie" element={<Form />}/>      
       <Route path="/movieLists" element={<MovieLists />}/>      
-      <Route path="/oneMovie/:id" element={<OneMovie />}/>      
+      <Route path="/movieDetail/:id" element={<MovieDetail />}/>      
       <Route path="/Update-A-Movie/:id" element={<EditAMovie />}/>      
      </Routes>
      </BrowserRouter>

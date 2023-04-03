@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate,Link} from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
-const OneMovie = () => {
+const MovieDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/movie/${id}`)
+      .get(`http://localhost:8000/api/movieDetail/${id}`)
       .then((res) => {
         setMovie(res.data);
       })
@@ -52,7 +52,10 @@ const OneMovie = () => {
             >
               <i className="fa fa-trash" aria-hidden="true"></i> Delete
             </button>
-            <Link to={`/Update-A-Movie/${movie._id}`}className="btn btn-warning w-25">
+            <Link
+              to={`/Update-A-Movie/${movie._id}`}
+              className="btn btn-warning w-25"
+            >
               <i className="fa fa-pencil" aria-hidden="true"></i> Edit
             </Link>
           </div>
@@ -62,4 +65,4 @@ const OneMovie = () => {
   );
 };
 
-export default OneMovie;
+export default MovieDetail;

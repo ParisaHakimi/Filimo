@@ -15,7 +15,7 @@ const EditAMovie = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/movie/${id}`)
+    axios.get(`http://localhost:8000/api/movieDetail/${id}`)
     .then((res)=>{
         setTitle(res.data.title);
         setDirector(res.data.director);
