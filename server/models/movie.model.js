@@ -17,7 +17,7 @@ const MovieSchema = new mongoose.Schema(
         "Harror",
         "Sci-Fi",
         "Fantasy",
-        "Acttion",
+        "Action",
         "Family",
         "Animated",
         "Documentary",
