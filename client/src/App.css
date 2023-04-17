@@ -61,6 +61,32 @@ a{
   background-color: #3b3507;
   background-color: #2c3529;
   border: 3px solid #fcc03d;
+  position: relative;
+}
+.rated{
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* height: 35px; */
+  padding-left: 5px;
+  /* border-top-left-radius: 1px; */
+  border-bottom-right-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,.459);
+  background-color: rgba(0, 0, 0, 0.655);
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.star{
+  /* position: relative; */
+  /* background-color: blue; */
+width: 20px;
+height: 20px;
+margin-right: 5px;
+}
+.rated-vote{
+  position: relative;
+  
 }
 
 .oneMovieImage{
