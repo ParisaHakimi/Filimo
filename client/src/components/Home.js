@@ -10,7 +10,6 @@ useEffect(() => {
   axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`)
   .then(res=>{
     console.log("res.data: ",res.data)
-    // console.log("res.data.Search: ",res.data.Search)
     setRecentMovies(res.data.results)
   })
 .catch(err=>console.log(err))
@@ -23,7 +22,7 @@ useEffect(() => {
       </div> */}
       <h1 className="movie-list mt-3">Popular Movies</h1>
       <div className="container d-flex movie-list-container p-3">
-        {recentMovies.map((movie, i) => (
+        {recentMovies.map((movie) => (
           <Link to={`/movieDetail/${movie.id}`} className="card mb-3">
             <img
               src={`https://image.tmdb.org/t/p/w500//${movie.poster_path}`}
@@ -34,12 +33,10 @@ useEffect(() => {
             <img src="./images/star.png" alt="rated-star" className="star"/>
               <p className="rated-vote text-light">{movie.vote_average}</p>
             </div>
+            <div className="home-movie-overlay text-light">More...</div>
           </Link>
         ))}
       </div>
-      {/* <ul>
-      {recentMovies.map((movie,i)=>(<h3>{movie.title}</h3>))}
-      </ul> */}
     </div>
   );
 };
