@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
-const NavBar = () => {
+const NavBar = ({searchResults, setSerachResults}) => {
     let activeStyle={"color":"#071c01" , "font-weight":"bold"}
+
   return (
     <nav className="navbar navbar-expand-lg no-gutter fluid d-flex  nav-bar">
         <div className="container-fluid">
@@ -23,7 +24,7 @@ const NavBar = () => {
           <NavLink className="nav-link active navLink" aria-current="page" to="/logreg" style={({isActive})=> isActive ? activeStyle : undefined}>Sign In</NavLink>
         </li>
         </ul>
-        <Search/>
+        <Search searchResults={searchResults} setSerachResults={setSerachResults}/>
     </div>
     </div>
     </nav>
