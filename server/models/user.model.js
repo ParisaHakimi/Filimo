@@ -2,14 +2,16 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
 
 // all the validation and hashing the password will be done at Schema level, so we'll not have to worry about them in controller file.
-const UserSchema = new mongoose.Schema({
+const UserSchema = mongoose.Schema({
     firstName:{
         type:String,
-        required:[true,"First name is required"]
+        required:[true,"First name is required"],
+        minLength: [3, "First name must be at least 3 character"],
     },
     lastName:{
         type:String,
-        required:[true,"Last name is required"]
+        required:[true,"Last name is required"],
+        minLength: [3, "Last name must be at least 3 character"],
     },
     email:{
         type:String,
@@ -25,7 +27,7 @@ const UserSchema = new mongoose.Schema({
 },{timestamps:true})
 
 // in mongoose a virtual is a property that is not stored in MongoDB - it creates a virtual field
-UserSchema.virtual('confirmPassword').get(()=>this._confirmPassword).set(value=>this._confirmPassword=value)
+UserSchema.virtual('confirmPassword').get(()=>this._confirmPassword).set((value)=>(this._confirmPassword=value))
 
 // pre middleware functions are executed one after another, when each middleware calls next 
 UserSchema.pre('validate',function (next) {
