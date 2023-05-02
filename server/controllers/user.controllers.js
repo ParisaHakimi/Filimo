@@ -4,12 +4,14 @@ const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET_KEY;
 
 module.exports = {
-  showAllUsers: (res, req) => {
+  // ** NOTE ** : remember to write (req,res) in order 
+  showAllUsers: (req, res) => {
     User.find()
       .then((result) => {
         res.json(result);
       })
       .catch((err) => {
+        // console.log(err)
         res.status(400).json(err);
       });
   },
@@ -65,5 +67,58 @@ module.exports = {
     } catch (error) {
       res.status(400).json(error);
     }
+  },
+    // remember to uncomment the middleware for confirmPassword on user.model file
+  // login user is using cookies
+  loginUser: async (req, res) => {
+    // find a user who is already exist in our database based on their email
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      res.status(400).json({ error: "invalid email/password" });
+    }
+    try {
+      // "req.body.password" => regular string password
+      // "user.password" => hashed password
+      const isPasswordValid = await bcrypt.compare(
+        req.body.password,
+        user.password
+      );
+      console.log(isPasswordValid);
+      if (!isPasswordValid) {
+        res.status(400).json({ error: "invalid email/password" });
+      } else {
+        const userToken = jwt.sign(
+          // it doesn't have to be all the information, it can be some data that's part of the payload
+          { _id: user._id, email: user.email },
+          SECRET
+        );
+        res
+          .status(201)
+          .cookie("userToken", userToken, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 5400000),
+          })
+          .json({
+            successMessage: "User logged in",
+            user: user,
+          });
+      }
+    } catch (error) {
+      res.status(400).json({ error: "invalid email/password" });
+    }
+  },
+  getLoggedUser: (req, res) => {
+    const decodedJWT = jwt.decode(req.cookies.userToken, {
+      complete: true,
+    });
+    const loggedUser = User.findById(decodedJWT.payload._id);
+    decodedJWT &&
+      loggedUser
+        .then((result) => res.json(result))
+        .catch((err) => res.status(400).json(err));
+  },
+  logoutUser: (req, res) => {
+    res.clearCookie("userToken"); // clear the userToken cookie
+    res.json({ success: "Logged out" });
   },
 };

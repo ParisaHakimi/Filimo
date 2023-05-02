@@ -21,7 +21,7 @@ const NavBar = ({searchResults, setSerachResults}) => {
           <NavLink className="nav-link active navLink" aria-current="page" to="/addMovie" style={({isActive})=> isActive ? activeStyle : undefined}>Form</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link active navLink" aria-current="page" to="/logreg" style={({isActive})=> isActive ? activeStyle : undefined}>Sign In</NavLink>
+          <NavLink className="nav-link active navLink" aria-current="page" to="/registration" style={({isActive})=> isActive ? activeStyle : undefined}>Sign In</NavLink>
         </li>
         </ul>
         <Search searchResults={searchResults} setSerachResults={setSerachResults}/>

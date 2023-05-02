@@ -8,6 +8,8 @@ import MovieDetail from './components/MovieDetail';
 import EditAMovie from './components/EditAMovie';
 import Home from './components/Home';
 import SearchResult from './components/SearchResult';
+import RegistrationForm from './components/RegistrationForm';
+import Login from './components/Login';
 
 function App() {
   // we have to have searchResults state in App.js to nest its results into the Navbar=>Search and SearchResult components
@@ -18,7 +20,10 @@ function App() {
      <BrowserRouter>
      <NavBar searchResults={searchResults} setSerachResults={setSerachResults}/>
      <Routes>
-      <Route path="/home" element={<Home />}/>      
+      <Route path="/home" element={<Home />}/>  
+      <Route path="/registration" element={<RegistrationForm />} />  
+      <Route path="/login" element={<Login />} />
+  
       <Route path="/addMovie" element={<Form />}/>      
       <Route path="/movieLists" element={<MovieLists />}/>      
       <Route path="/movieDetail/:id" element={<MovieDetail />}/>      
