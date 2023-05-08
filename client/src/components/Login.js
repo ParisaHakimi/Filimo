@@ -31,17 +31,17 @@ const Login = () => {
       setErrors(err.response.data.errors);
     }
   };
-  // col-xs-12 col-sm-5
-  // col-xs-12 col-sm-7
+
   return (
     <div className="container">
       <div className="row">
-        <div className="container p-4"> 
-          <form className="col col-sm-5 userForm mx-auto p-4" onSubmit={submitHandler}>
+        <div className="container p-4 d-flex align-items-center justify-content-between w-100 signin-container"> 
+        <div className="row">
+          <form className="col-md-4 mb-3 userForm p-4" onSubmit={submitHandler}>
             <h2 className="mb-3">Sign in</h2>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Email address
+                Email
               </label>
               <input
                 type="email"
@@ -73,7 +73,7 @@ const Login = () => {
               Sign in
             </button>
             {/* <hr /> */}
-            <div className="divider"><span>New to Filimo?</span></div>
+            <div className="divider"><span >New to Filimo?</span></div>
              <Link to="/registration" className="btn reglogBtn w-100">
             Create your Filimo account
           </Link>
@@ -94,6 +94,31 @@ const Login = () => {
               </p>
             </div>
           </div> */}
+
+          <div className="col-md-8 signin-perks ">
+            <h1>Benefits of your free Filimo account</h1>
+            <p>
+              <strong>Personalized Recommendations</strong>
+              <br />
+              Discover shows you'll love.
+            </p>
+            <p>
+              <strong>Your Watchlist</strong>
+              <br />
+              Track everything you want to watch and receive e-mail when movies open in theaters.
+            </p>
+            <p>
+              <strong>Your Ratings</strong>
+              <br />
+              Rate and remember everything you've seen.
+            </p>
+            <p>
+              <strong>Contribute to Filimo</strong>
+              <br />
+              Add data that will be seen by millions of people and get cool badges.
+            </p>
+          </div>
+          </div>
         </div>
       </div>
     </div>
