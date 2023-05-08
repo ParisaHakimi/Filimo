@@ -39,9 +39,10 @@ const RegistrationForm = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="container p-4">
+        <div className="container p-4 d-flex align-items-center justify-content-between w-100 signin-container">
+        <div className="row">
           <form
-            className="col col-sm-5 userForm mx-auto p-4"
+            className="col-md-4 mb-3 userForm p-4"
             onSubmit={submitHandler}
           >
             <h2 className="mb-3">Create Acoount</h2>
@@ -136,6 +137,30 @@ const RegistrationForm = () => {
             Already have an account? Log in
           </Link>
           </form>
+          <div className="col-md-8 signin-perks ">
+            <h1>Benefits of your free Filimo account</h1>
+            <p>
+              <strong>Personalized Recommendations</strong>
+              <br />
+              Discover shows you'll love.
+            </p>
+            <p>
+              <strong>Your Watchlist</strong>
+              <br />
+              Track everything you want to watch and receive e-mail when movies open in theaters.
+            </p>
+            <p>
+              <strong>Your Ratings</strong>
+              <br />
+              Rate and remember everything you've seen.
+            </p>
+            <p>
+              <strong>Contribute to Filimo</strong>
+              <br />
+              Add data that will be seen by millions of people and get cool badges.
+            </p>
+          </div>
+        </div>
         </div>
       </div>
     </div>
